@@ -55,12 +55,18 @@ public class Customers {
 	@Column(name = "GroupNum")
 	private int groupNum;
 
+	@Column(name = "Deleted")
+	private String deleted;
+
+	@Column(name = "DocEntry")
+	private int docEntry;
+
 	public Customers() {
 	}
 
 	public Customers(String cardCode, String cardName, String cardType, int groupCode, String cmpPrivate, String phone1,
 			String phone2, String fax, String cntctPrsn, String notes, float balance, float checksBal, float dNotesBal,
-			float ordersBal, int groupNum) {
+			float ordersBal, int groupNum, String deleted, int docEntry) {
 		this.cardCode = cardCode;
 		this.cardName = cardName;
 		this.cardType = cardType;
@@ -76,8 +82,27 @@ public class Customers {
 		this.dNotesBal = dNotesBal;
 		this.ordersBal = ordersBal;
 		this.groupNum = groupNum;
+		this.deleted = deleted; 
+		this.docEntry = docEntry;
 	}
 
+	
+	public String getDeleted() {
+		return this.deleted;
+	}
+	
+	public void setDeleted(String deleted) {
+		this.deleted = deleted;
+	}
+	
+	public String getDocEntry() {
+		return this.docEntry;
+	}
+	
+	public void setDocEntry(int docEntry) {
+		this.docEntry = docEntry;
+	}
+	
 	public String getCardCode() {
 		return cardCode;
 	}
