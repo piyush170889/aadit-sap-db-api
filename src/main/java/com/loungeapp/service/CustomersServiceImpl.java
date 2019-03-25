@@ -11,8 +11,11 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.loungeapp.domain.CustomerAddresses;
 import com.loungeapp.domain.Customers;
 import com.loungeapp.model.BaseWrapper;
+import com.loungeapp.model.CustomerDetailsWrapper;
+import com.loungeapp.persitence.CustomersAddressesRepository;
 import com.loungeapp.persitence.CustomersRepository;
 import com.loungeapp.utils.CommonUtility;
 
@@ -22,6 +25,9 @@ public class CustomersServiceImpl implements CustomersService {
 
 	@Autowired
 	private CustomersRepository customersRepository;
+
+	@Autowired
+	private CustomersAddressesRepository customersAddressesRepository;
 
 	@Autowired
 	private CommonUtility commonUtility;
@@ -42,7 +48,20 @@ public class CustomersServiceImpl implements CustomersService {
 		if (customersList.isEmpty())
 			customersList = new ArrayList<Customers>();
 
-		return new BaseWrapper(customersList);
+		// Create Response And Send
+		List<CustomerDetailsWrapper> response = new ArrayList<CustomerDetailsWrapper>();
+
+		for (Customers customers : customersList) {
+			List<CustomerAddresses> customerAddressesList = customersAddressesRepository
+					.findByCardCode(customers.getCardCode());
+
+			CustomerDetailsWrapper customerDetailsWrapper = new CustomerDetailsWrapper(customers,
+					customerAddressesList);
+
+			response.add(customerDetailsWrapper);
+		}
+
+		return new BaseWrapper(response);
 	}
 
 }

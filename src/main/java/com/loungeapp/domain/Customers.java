@@ -20,7 +20,7 @@ public class Customers {
 	private String cardType;
 
 	@Column(name = "GroupCode")
-	private int groupCode;
+	private Integer groupCode;
 
 	@Column(name = "CmpPrivate")
 	private String cmpPrivate;
@@ -41,32 +41,32 @@ public class Customers {
 	private String notes;
 
 	@Column(name = "Balance")
-	private float balance;
+	private Float balance;
 
 	@Column(name = "ChecksBal")
-	private float checksBal;
+	private Float checksBal;
 
 	@Column(name = "DNotesBal")
-	private float dNotesBal;
+	private Float dNotesBal;
 
 	@Column(name = "OrdersBal")
-	private float ordersBal;
+	private Float ordersBal;
 
 	@Column(name = "GroupNum")
-	private int groupNum;
+	private Integer groupNum;
 
 	@Column(name = "Deleted")
 	private String deleted;
 
 	@Column(name = "DocEntry")
-	private int docEntry;
+	private Integer docEntry;
 
 	public Customers() {
 	}
 
-	public Customers(String cardCode, String cardName, String cardType, int groupCode, String cmpPrivate, String phone1,
-			String phone2, String fax, String cntctPrsn, String notes, float balance, float checksBal, float dNotesBal,
-			float ordersBal, int groupNum, String deleted, int docEntry) {
+	public Customers(String cardCode, String cardName, String cardType, Integer groupCode, String cmpPrivate, String phone1,
+			String phone2, String fax, String cntctPrsn, String notes, Float balance, Float checksBal, Float dNotesBal,
+			Float ordersBal, Integer groupNum, String deleted, Integer docEntry) {
 		this.cardCode = cardCode;
 		this.cardName = cardName;
 		this.cardType = cardType;
@@ -82,27 +82,26 @@ public class Customers {
 		this.dNotesBal = dNotesBal;
 		this.ordersBal = ordersBal;
 		this.groupNum = groupNum;
-		this.deleted = deleted; 
+		this.deleted = deleted;
 		this.docEntry = docEntry;
 	}
 
-	
 	public String getDeleted() {
 		return this.deleted;
 	}
-	
+
 	public void setDeleted(String deleted) {
 		this.deleted = deleted;
 	}
-	
-	public String getDocEntry() {
+
+	public Integer getDocEntry() {
 		return this.docEntry;
 	}
-	
-	public void setDocEntry(int docEntry) {
+
+	public void setDocEntry(Integer docEntry) {
 		this.docEntry = docEntry;
 	}
-	
+
 	public String getCardCode() {
 		return cardCode;
 	}
@@ -127,11 +126,11 @@ public class Customers {
 		this.cardType = cardType;
 	}
 
-	public int getGroupCode() {
+	public Integer getGroupCode() {
 		return groupCode;
 	}
 
-	public void setGroupCode(int groupCode) {
+	public void setGroupCode(Integer groupCode) {
 		this.groupCode = groupCode;
 	}
 
@@ -183,43 +182,43 @@ public class Customers {
 		this.notes = notes;
 	}
 
-	public float getBalance() {
+	public Float getBalance() {
 		return balance;
 	}
 
-	public void setBalance(float balance) {
+	public void setBalance(Float balance) {
 		this.balance = balance;
 	}
 
-	public float getChecksBal() {
+	public Float getChecksBal() {
 		return checksBal;
 	}
 
-	public void setChecksBal(float checksBal) {
+	public void setChecksBal(Float checksBal) {
 		this.checksBal = checksBal;
 	}
 
-	public float getdNotesBal() {
+	public Float getdNotesBal() {
 		return dNotesBal;
 	}
 
-	public void setdNotesBal(float dNotesBal) {
+	public void setdNotesBal(Float dNotesBal) {
 		this.dNotesBal = dNotesBal;
 	}
 
-	public float getOrdersBal() {
+	public Float getOrdersBal() {
 		return ordersBal;
 	}
 
-	public void setOrdersBal(float ordersBal) {
+	public void setOrdersBal(Float ordersBal) {
 		this.ordersBal = ordersBal;
 	}
 
-	public int getGroupNum() {
+	public Integer getGroupNum() {
 		return groupNum;
 	}
 
-	public void setGroupNum(int groupNum) {
+	public void setGroupNum(Integer groupNum) {
 		this.groupNum = groupNum;
 	}
 
@@ -256,9 +255,12 @@ public class Customers {
 		builder.append(ordersBal);
 		builder.append(", groupNum=");
 		builder.append(groupNum);
+		builder.append(", deleted=");
+		builder.append(deleted);
+		builder.append(", docEntry=");
+		builder.append(docEntry);
 		builder.append("]");
 		return builder.toString();
 	}
 
-	
 }

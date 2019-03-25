@@ -35,25 +35,25 @@ public class DeliveryFooter {
 	private String dscription;
 
 	@Column(name = "Quantity")
-	private float quantity;
+	private Float quantity;
 
 	@Column(name = "ShipDate")
 	private Date shipDate;
 
 	@Column(name = "OpenQty")
-	private float openQty;
+	private Float openQty;
 
 	@Column(name = "Price")
-	private float price;
+	private Float price;
 
 	@Column(name = "Currency")
 	private String currency;
 
 	@Column(name = "Rate")
-	private float rate;
+	private Float rate;
 
 	@Column(name = "LineTotal")
-	private float lineTotal;
+	private Float lineTotal;
 
 	@Column(name = "DocDate")
 	private Date docDate;
@@ -65,13 +65,13 @@ public class DeliveryFooter {
 	private String shipToDesc;
 
 	@Column(name = "QtyToShip")
-	private float qtyToShip;
+	private Float qtyToShip;
 
 	@Column(name = "DelivrdQty")
-	private float delivrdQty;
+	private Float delivrdQty;
 
 	@Column(name = "OrderedQty")
-	private float orderedQty;
+	private Float orderedQty;
 
 	public DeliveryFooter() {
 	}
@@ -124,11 +124,11 @@ public class DeliveryFooter {
 		this.dscription = dscription;
 	}
 
-	public float getQuantity() {
+	public Float getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(float quantity) {
+	public void setQuantity(Float quantity) {
 		this.quantity = quantity;
 	}
 
@@ -140,19 +140,19 @@ public class DeliveryFooter {
 		this.shipDate = shipDate;
 	}
 
-	public float getOpenQty() {
+	public Float getOpenQty() {
 		return openQty;
 	}
 
-	public void setOpenQty(float openQty) {
+	public void setOpenQty(Float openQty) {
 		this.openQty = openQty;
 	}
 
-	public float getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 
@@ -164,19 +164,19 @@ public class DeliveryFooter {
 		this.currency = currency;
 	}
 
-	public float getRate() {
+	public Float getRate() {
 		return rate;
 	}
 
-	public void setRate(float rate) {
+	public void setRate(Float rate) {
 		this.rate = rate;
 	}
 
-	public float getLineTotal() {
+	public Float getLineTotal() {
 		return lineTotal;
 	}
 
-	public void setLineTotal(float lineTotal) {
+	public void setLineTotal(Float lineTotal) {
 		this.lineTotal = lineTotal;
 	}
 
@@ -204,27 +204,27 @@ public class DeliveryFooter {
 		this.shipToDesc = shipToDesc;
 	}
 
-	public float getQtyToShip() {
+	public Float getQtyToShip() {
 		return qtyToShip;
 	}
 
-	public void setQtyToShip(float qtyToShip) {
+	public void setQtyToShip(Float qtyToShip) {
 		this.qtyToShip = qtyToShip;
 	}
 
-	public float getDelivrdQty() {
+	public Float getDelivrdQty() {
 		return delivrdQty;
 	}
 
-	public void setDelivrdQty(float delivrdQty) {
+	public void setDelivrdQty(Float delivrdQty) {
 		this.delivrdQty = delivrdQty;
 	}
 
-	public float getOrderedQty() {
+	public Float getOrderedQty() {
 		return orderedQty;
 	}
 
-	public void setOrderedQty(float orderedQty) {
+	public void setOrderedQty(Float orderedQty) {
 		this.orderedQty = orderedQty;
 	}
 
