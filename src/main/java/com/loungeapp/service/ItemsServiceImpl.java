@@ -32,7 +32,7 @@ public class ItemsServiceImpl implements ItemsService {
 		List<OITM> itemsMasterListing = null;
 
 		if (limit.isPresent())
-			pageRequest = new PageRequest(pageNo, limit.get());
+			pageRequest = new PageRequest((pageNo-1), limit.get());
 		else
 			pageRequest = commonUtility.getPageRequest(pageNo);
 

@@ -57,7 +57,7 @@ public class OrdersServiceImpl implements OrdersService {
 		Sort sort = new Sort(Direction.DESC, "docEntry");
 
 		if (pageNo.isPresent() && limit.isPresent()) {
-			pageRequest = new PageRequest(pageNo.get(), limit.get(), sort);
+			pageRequest = new PageRequest((pageNo.get() - 1), limit.get(), sort);
 		} else if (pageNo.isPresent() && !limit.isPresent()) {
 			pageRequest = commonUtility.getPageRequest(pageNo.get());
 		}
