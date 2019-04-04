@@ -88,6 +88,8 @@ public class OrderItems {
 	}
 
 	public Float getQuantity() {
+		if (quantity == null)
+			quantity = 0F;
 		return quantity;
 	}
 
@@ -96,6 +98,8 @@ public class OrderItems {
 	}
 
 	public Float getOpenQty() {
+		if (openQty == null)
+			openQty = 0F;
 		return openQty;
 	}
 
@@ -104,6 +108,8 @@ public class OrderItems {
 	}
 
 	public Float getDelivrdQty() {
+		if (delivrdQty == null)
+			delivrdQty = 0F;
 		return delivrdQty;
 	}
 

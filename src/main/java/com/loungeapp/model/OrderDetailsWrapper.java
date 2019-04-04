@@ -18,6 +18,14 @@ public class OrderDetailsWrapper {
 
 	private String shipToCode;
 
+	private float openQuantity;
+
+	private float quantity;
+
+	private float deliveredQuantity;
+
+	private float balanceQuantity;
+
 	private List<OrderItems> orderItemsList;
 
 	public OrderDetailsWrapper() {
@@ -32,6 +40,38 @@ public class OrderDetailsWrapper {
 		this.cardName = cardName;
 		this.shipToCode = shipToCode;
 		this.orderItemsList = orderItemsList;
+	}
+
+	public float getOpenQuantity() {
+		return openQuantity;
+	}
+
+	public void setOpenQuantity(float openQuantity) {
+		this.openQuantity = openQuantity;
+	}
+
+	public float getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(float quantity) {
+		this.quantity = quantity;
+	}
+
+	public float getDeliveredQuantity() {
+		return deliveredQuantity;
+	}
+
+	public void setDeliveredQuantity(float deliveredQuantity) {
+		this.deliveredQuantity = deliveredQuantity;
+	}
+
+	public float getBalanceQuantity() {
+		return balanceQuantity;
+	}
+
+	public void setBalanceQuantity(float balanceQuantity) {
+		this.balanceQuantity = balanceQuantity;
 	}
 
 	public List<OrderItems> getOrderItemsList() {

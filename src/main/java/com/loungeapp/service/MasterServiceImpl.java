@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,9 +12,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.loungeapp.domain.ConfigurationDtls;
 import com.loungeapp.domain.Master;
+import com.loungeapp.domain.OITM;
+import com.loungeapp.domain.Orders;
 import com.loungeapp.domain.RoleMasterDtl;
+import com.loungeapp.model.BaseWrapper;
+import com.loungeapp.model.SAPDORequestWrapper;
+import com.loungeapp.model.SAPDOResponseWrapper;
 import com.loungeapp.persitence.ConfigurationDtlsRepository;
 import com.loungeapp.persitence.MasterRepository;
+import com.loungeapp.persitence.OITMRepository;
+import com.loungeapp.persitence.OrdersRepository;
 import com.loungeapp.persitence.RoleMasterDtlRepository;
 import com.loungeapp.utils.RoleType;
 
@@ -96,5 +104,26 @@ public class MasterServiceImpl implements MasterService {
 
 		return finalMasterHashmap;
 	}
+
+	@Autowired
+	private OITMRepository oitmRepository;
 	
+	@Autowired
+	private OrdersRepository ordersRepository;
+	
+	@Override
+	public BaseWrapper doGetDoDetails(SAPDORequestWrapper request) {
+
+		Set<String> itemCodesSet = request.getItemCodes();
+		System.out.println("itemCodesSet = " + itemCodesSet.toString());
+		Set<Integer> orderIdsSet = request.getOrderIds();
+		System.out.println("orderIdsSet = " + orderIdsSet.toString());
+		
+		List<OITM> itemDetails = oitmRepository.findByItemCodeIn(itemCodesSet);
+		List<Orders> orderDetails = ordersRepository.findByDocNumIn(orderIdsSet);
+		
+		SAPDOResponseWrapper response = new SAPDOResponseWrapper(itemDetails, orderDetails);
+		
+		return new BaseWrapper(response);
+	}
 }

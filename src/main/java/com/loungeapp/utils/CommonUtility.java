@@ -59,8 +59,6 @@ public class CommonUtility {
 	@Autowired
 	Properties responseMessageProperties;
 
-	@Autowired
-	private MessageUtility messageUtility;
 
 	@Autowired
 	private OtpDtlRepository otpDtlRepository;
@@ -117,45 +115,6 @@ public class CommonUtility {
 		}
 
 		return returnVal;
-	}
-
-	public boolean sendOTP(String cntcNum, int otp, String deviceInfo) throws Exception {
-		List<OtpDtl> otpDetailsList = otpDtlRepository.findByCellnumber(cntcNum);
-		int otpDetailsSize = otpDetailsList.size();
-		if (otpDetailsSize == 0) {
-			// Insert OTP Record
-			OtpDtl otpDtl = new OtpDtl();
-			otpDtl.setCellnumber(cntcNum);
-			otpDtl.setDeviceInfo(deviceInfo);
-			otpDtl.setOtp(otp);
-			otpDtlRepository.save(otpDtl);
-		} else if (otpDetailsSize == 1) {
-			OtpDtl otpDetails = otpDetailsList.get(0);
-			int maxtAllowedAttempts = (int) selectConfigurationValue("maxNoOfAttempts");
-
-			// Check max no of attempts
-			if (otpDetails.getNumOfAttempts() < maxtAllowedAttempts) { // If max
-																		// attempts
-																		// not
-																		// exceeded
-																		// update
-																		// the
-																		// otp
-																		// record
-				otpDetails.setOtpId(otpDetails.getOtpId());
-				otpDetails.setCellnumber(cntcNum);
-				otpDetails.setDeviceInfo(deviceInfo);
-				otpDetails.setOtp(otp);
-				otpDetails.setNumOfAttempts(otpDetails.getNumOfAttempts() + 1);
-				otpDtlRepository.save(otpDetails);
-			} else { // If max attempts exceeded throw exception
-				throw new ServicesException("628");
-			}
-		} else {
-			throw new ServicesException("622");
-		}
-
-		return messageUtility.sendMessage(cntcNum, otp);
 	}
 
 	public Object selectConfigurationValue(String configName) {

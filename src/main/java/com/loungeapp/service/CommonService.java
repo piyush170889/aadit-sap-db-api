@@ -8,7 +8,7 @@ import com.loungeapp.model.BaseWrapper;
 
 public interface CommonService {
 
-	BaseWrapper doSendOtp(OtpDtl otpDetails) throws Exception;
+//	BaseWrapper doSendOtp(OtpDtl otpDetails) throws Exception;
 
 	BaseWrapper recoverForgetPassword(String recoveryContact) throws ServicesException;
 

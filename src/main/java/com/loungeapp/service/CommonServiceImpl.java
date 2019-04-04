@@ -35,7 +35,7 @@ public class CommonServiceImpl implements CommonService {
 
 	private Logger logger = Logger.getLogger(CommonServiceImpl.class);
 
-	@Override
+	/*@Override
 	public BaseWrapper doSendOtp(OtpDtl otpDetails) throws Exception {
 		boolean isOtpSent = false;
 		int otp = Integer.parseInt(commonUtility.getOTP());
@@ -47,7 +47,7 @@ public class CommonServiceImpl implements CommonService {
 		} else {
 			throw new ServicesException("613");
 		}
-	}
+	}*/
 
 	@Override
 	public BaseWrapper recoverForgetPassword(String recoveryContact) throws ServicesException {

@@ -1,19 +1,15 @@
 
 package com.loungeapp.restcontrollers;
 
-import javax.validation.Valid;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.loungeapp.domain.OtpDtl;
 import com.loungeapp.exception.ServicesException;
 import com.loungeapp.model.BaseWrapper;
 import com.loungeapp.service.CommonService;
@@ -35,11 +31,11 @@ public class CommonController {
 	 * @throws ServicesException
 	 * 
 	 */
-	@RequestMapping(value = "send-otp", method = RequestMethod.POST)
+	/*@RequestMapping(value = "send-otp", method = RequestMethod.POST)
 	public Object doSendOtp(@Valid @RequestBody OtpDtl otpDetails) throws Exception {
 		System.out.println("otpDetails = " + otpDetails.toString());
 		return commonService.doSendOtp(otpDetails);
-	}
+	}*/
 
 	/**
 	 * Description : FORGET PASSWORD.

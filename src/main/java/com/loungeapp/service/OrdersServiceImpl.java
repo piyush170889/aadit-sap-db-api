@@ -124,16 +124,17 @@ public class OrdersServiceImpl implements OrdersService {
 
 		// Set Total Order Qty, Total Delivered Qty, Total Opening Qty And Total
 		// Balance In Orders
+		System.out.println("ordersDetails.getOpenQuantity() = " + ordersDetails.getOpenQuantity() 
+		+ ", orderItems.getOpenQty() = " + orderItemsList.get(0).getOpenQty());
 		for (OrderItems orderItems : orderItemsList) {
-			ordersDetails.setQuantity(ordersDetails.getQuantity() + orderItems.getQuantity()); // Sales
-																								// Order
-																								// Qty
-			ordersDetails.setOpenQuantity(ordersDetails.getOpenQuantity() + orderItems.getOpenQty()); // Opening
-																										// Qty
-			ordersDetails.setDeliveredQuantity(ordersDetails.getDeliveredQuantity() + orderItems.getDelivrdQty()); // Delivered
-																													// Qty
-			ordersDetails.setBalanceQuantity(ordersDetails.getBalanceQuantity() + orderItems.getOpenQty()); // Balance
-																											// Qty
+			// Sales Order Qty
+			ordersDetails.setQuantity(ordersDetails.getQuantity() + orderItems.getQuantity());
+			// Opening Qty
+			ordersDetails.setOpenQuantity(ordersDetails.getOpenQuantity() + orderItems.getOpenQty()); 
+			// Delivered Qty
+			ordersDetails.setDeliveredQuantity(ordersDetails.getDeliveredQuantity() + orderItems.getDelivrdQty());
+			// Balance Qty
+			ordersDetails.setBalanceQuantity(ordersDetails.getBalanceQuantity() + orderItems.getOpenQty()); 
 		}
 
 		OrderDetailsWrapper response = new OrderDetailsWrapper();
@@ -178,10 +179,13 @@ public class OrdersServiceImpl implements OrdersService {
 				Date deliveryDate = deliveryHeader.getDocDate();
 				String deliveryDateFormatted = dfDdMmYyyy.format(deliveryDate);
 
-				if (response.containsKey(deliveryDateFormatted))
-					deliveryDetailsWrapperList = response.get(deliveryDate);
-				else
+				if (response.containsKey(deliveryDateFormatted)) {
+					deliveryDetailsWrapperList = response.get(deliveryDateFormatted);
+					System.out.println("deliveryDateFormatted = " + deliveryDateFormatted + ", In if");
+				} else {
 					deliveryDetailsWrapperList = new ArrayList<DeliveryDetailsWrapper>();
+					System.out.println("deliveryDateFormatted = " + deliveryDateFormatted + ", In Else");
+				}
 
 				DeliveryDetailsWrapper deliveryDetailsWrapper = new DeliveryDetailsWrapper(deliveryHeader.getDocNum(),
 						deliveryFooter.getBaseEntry(), deliveryFooter.getItemCode(), deliveryFooter.getDscription(),
@@ -189,6 +193,8 @@ public class OrdersServiceImpl implements OrdersService {
 						deliveryHeader.getuVehno(), deliveryHeader.getuDrname());
 
 				deliveryDetailsWrapperList.add(deliveryDetailsWrapper);
+				System.out.println("deliveryDetailsWrapperListSize = " + deliveryDetailsWrapperList.size());
+				System.out.println("deliveryDetailsWrapperList = " + deliveryDetailsWrapperList.toString());
 
 				response.put(deliveryDateFormatted, deliveryDetailsWrapperList);
 			}
@@ -200,8 +206,8 @@ public class OrdersServiceImpl implements OrdersService {
 	@Override
 	public BaseWrapper doGetOrderItemsDetailsAfterDate(int orderDlsId, String itemCode, String date) {
 
-		List<DeliveryFooter> deliveryFooterDetailsList = deliveryFooterRepository.findDeliveryFooterDetailsByBaseEntryAndItemCodeAndDate(orderDlsId,
-				itemCode, date);
+		List<DeliveryFooter> deliveryFooterDetailsList = deliveryFooterRepository
+				.findDeliveryFooterDetailsByBaseEntryAndItemCodeAndDate(orderDlsId, itemCode, date);
 
 		// Create Response Object
 		Map<String, List<DeliveryDetailsWrapper>> response = new HashMap<String, List<DeliveryDetailsWrapper>>();
@@ -233,7 +239,7 @@ public class OrdersServiceImpl implements OrdersService {
 				String deliveryDateFormatted = dfDdMmYyyy.format(deliveryDate);
 
 				if (response.containsKey(deliveryDateFormatted))
-					deliveryDetailsWrapperList = response.get(deliveryDate);
+					deliveryDetailsWrapperList = response.get(deliveryDateFormatted);
 				else
 					deliveryDetailsWrapperList = new ArrayList<DeliveryDetailsWrapper>();
 
@@ -250,4 +256,6 @@ public class OrdersServiceImpl implements OrdersService {
 
 		return new BaseWrapper(response);
 	}
+	
+
 }
