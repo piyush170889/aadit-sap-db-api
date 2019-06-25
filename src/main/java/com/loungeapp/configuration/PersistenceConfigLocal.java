@@ -55,17 +55,17 @@ public class PersistenceConfigLocal {
 		dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
 		// Local
-//		dataSource.setUrl("jdbc:sqlserver://localhost:1433;databaseName=Adit_Infra_Final");
-//		dataSource.setUsername("sa");
-//		dataSource.setPassword("replete@123");
+		dataSource.setUrl("jdbc:sqlserver://localhost:1433;databaseName=Adit_Infra_Final");
+		dataSource.setUsername("sa");
+		dataSource.setPassword("replete@123");
 
 		
-	    dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+//	    dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 	    
-  		dataSource.setUrl("jdbc:mysql://67.211.220.180:3306/fleet_db");
+//  		dataSource.setUrl("jdbc:mysql://67.211.220.180:3306/fleet_db");
 //	    dataSource.setUrl("jdbc:mysql://localhost:3306/fleet_db");
-  	    dataSource.setUsername("root");
-  	  dataSource.setPassword("Replete@123");	//	For External Connection to IP
+//  	    dataSource.setUsername("root");
+//  	  dataSource.setPassword("Replete@123");	//	For External Connection to IP
 //  		dataSource.setPassword("Replete@789");		//	fOR localhost Connection
 
 		return dataSource;

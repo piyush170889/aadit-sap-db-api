@@ -1,15 +1,23 @@
 
 package com.loungeapp.restcontrollers;
 
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.loungeapp.domain.OITM;
 import com.loungeapp.exception.ServicesException;
 import com.loungeapp.model.BaseWrapper;
 import com.loungeapp.service.CommonService;
@@ -88,4 +96,17 @@ public class CommonController {
 
 	}
 
+	@PersistenceContext
+	private EntityManager em;
+	
+	@GetMapping("/ext/text")
+	public Object testNative() {
+		
+		Query query = em.createNativeQuery("select * from OITM where ItmsGrpCod=105 limit 0,100", OITM.class);
+		
+		List<OITM> oitmList = query.getResultList();
+		System.out.println("EmRteurn = " + oitmList.toString());
+		
+		return new BaseWrapper();
+	}
 }
