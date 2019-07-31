@@ -147,12 +147,12 @@
 		</dependency>
 
 		<!-- Twilio REST API -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.twilio.sdk</groupId>
 			<artifactId>twilio-java-sdk</artifactId>
 			<version>5.8.0</version>
 			<scope>compile</scope>
-		</dependency>
+		</dependency> -->
 		<!-- Mail JAR -->
 		<dependency>
 			<groupId>javax.mail</groupId>
